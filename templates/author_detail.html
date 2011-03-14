@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{author.first_name}}*{{author.last_name}}</h2>
+    <ul>
+        
+            <li>id={{ author.id }}</li>
+            <li>email={{ author.email }}</li>
+            <li>更新最后访问时间为={{ author.last_accessed }}</li>
+    </ul>
+{% endblock %}
+

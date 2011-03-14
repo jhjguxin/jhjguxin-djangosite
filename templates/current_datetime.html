@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{%load custom_tag%}
+{% block title %}The current time{% endblock %}
+
+{% block content %}
+<p>It is now {{ current_date }}.</p>
+
+<p>The time is 	'{% current_time "%Y-%m-%d %I:%M %p" %}'.</p>
+
+{% endblock %}
+

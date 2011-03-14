@@ -1,0 +1,19 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="/f_media/css/base.css" />
+</head>
+<body>
+  <center>
+    <h1>My helpful timestamp site</h1>
+    {% block content %}{% endblock %}
+    {% block footer %}
+    <hr>
+    <p>Thanks for visiting my site.</p>
+    {% endblock %}
+    <a href="/">返回首页</a>
+  </center>
+</body>
+</html>
+
