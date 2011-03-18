@@ -80,7 +80,7 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.load_template_source',
 #     'django.template.loaders.eggs.Loader',
 )
-
+#响应中间件是自后向前执行的
 MIDDLEWARE_CLASSES = (
      'django.middleware.common.CommonMiddleware',
      'django.contrib.sessions.middleware.SessionMiddleware',
@@ -91,6 +91,7 @@ MIDDLEWARE_CLASSES = (
       "django.middleware.csrf.CsrfViewMiddleware",
       "django.middleware.csrf.CsrfResponseMiddleware",
       'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware', 
+      "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
 )
 
 ROOT_URLCONF = 'mysite.urls'
@@ -121,6 +122,7 @@ INSTALLED_APPS = (
       'django.contrib.sessions',
       'django.contrib.sitemaps',
       'django.contrib.sites',
+      'django.contrib.redirects',
       'django.contrib.flatpages',
 )
 #默认登录地址LOGIN_URL (/accounts/login/ by default)
