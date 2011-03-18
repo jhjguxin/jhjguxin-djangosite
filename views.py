@@ -8,6 +8,9 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse,Http404
 from django.views.generic.simple import direct_to_template
 import datetime
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponseRedirect
 
 
 
@@ -128,5 +131,18 @@ def unruly_passengers_csv(request):
   for (year,num)in zip(range(1995,2006),UNRULY_PASSENGERS):
     writer.writerow([year,num])
   return response
+
+
+#///处理注册
+def register(request):
+  if request.method=="POST":
+    form=UserCreationForm(request.POST)
+    if form.is_valid():
+      new_user=form.save()
+      return HttpResponseRedirect("/books")
+  else: 
+     form=UserCreationForm()
+#  return render_to_response("registration/register.html",{"form":form,})
+  return render_to_response("register.html",{"form":form,})
 
 

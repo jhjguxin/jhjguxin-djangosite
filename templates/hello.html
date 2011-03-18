@@ -1,13 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
-
-
-
-
-<html lang="en">
-
-<body>
+{% extends "base.html" %}
+{% block title %}自动转义{% endblock %}
+{% block content %}
 自动转义：
     Hello, {{ name }}.
     {{type}}.我是中国人
-</body>
-</html>
+{% endblock %}

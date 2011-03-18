@@ -123,3 +123,5 @@ INSTALLED_APPS = (
       'django.contrib.sites',
       'django.contrib.flatpages',
 )
+#默认登录地址LOGIN_URL (/accounts/login/ by default)
+LOGIN_URL='/login'

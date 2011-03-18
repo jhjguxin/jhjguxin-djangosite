@@ -5,8 +5,14 @@
 <link rel="stylesheet" type="text/css" href="/f_media/css/base.css" />
 </head>
 <body>
+  {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}. Thanks for logging in or <a href="/logout">log out</a>.</p>
+  {% else %}
+    <p>Welcome, new user. Please <a href="/login">log in</a>or<a href="/register">register</a> .</p>
+  {% endif %}
+
   <center>
-    <h1>My helpful timestamp site</h1>
+    <h1>Haijun Jiang's  django site</h1>
     {% block content %}{% endblock %}
     {% block footer %}
     <hr>

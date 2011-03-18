@@ -10,9 +10,14 @@ from django.http import HttpResponseRedirect
 from django.views.generic import list_detail
 from django.shortcuts import get_object_or_404
 import datetime
-def search_form(request):
-  return render_to_response('search_form.html')#查找模板文件在templates里面
+from django.contrib.auth.decorators import login_required
 
+import pdb
+@login_required()
+def search_form(request):
+  
+  return render_to_response('search_form.html')#查找模板文件在templates里面
+@login_required
 def search(request):
   errors=[]
   if 'q' in request.GET:# and request.GET['q'](不为空):
@@ -42,6 +47,7 @@ def search(request):
 
 import pdb
 from mysite.books.forms import ContactForm
+@login_required
 def contact(request):
 #  pdb.set_trace()
   if request.method=='POST':
@@ -89,9 +95,10 @@ def contact(request):
 def thanks(request):
   return HttpResponse("thanks for contact us")
 import pdb
+@login_required
 def books_by_publisher(request,name):
   #Look up the publisher (and raise a 404 if it can't be found)
-  pdb.set_trace()
+#  pdb.set_trace()
   publisher=get_object_or_404(Publisher,name__iexact=name)
   #use the object_list view for the heavy lifting.
   return list_detail.object_list(
@@ -101,7 +108,7 @@ def books_by_publisher(request,name):
    template_object_name='book',
    extra_context={'publisher':publisher}
 )
-
+@login_required
 def author_detail(request,author_id):
   #Delegate to the generic view and get an HttpResponse.
   response=list_detail.object_detail(

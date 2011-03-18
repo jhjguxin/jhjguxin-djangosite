@@ -14,7 +14,7 @@ from mysite.books.models import Publisher,Book
 from django.conf.urls.defaults import *
 from mysite.feeds.feeds import LatesEntries
 from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
-
+from django.contrib.auth.views import login,logout
 
 urlpatterns = patterns('mysite.views',
 #    (r'^admin/',include(admin.site.urls)),
@@ -27,6 +27,7 @@ urlpatterns = patterns('mysite.views',
     (r'^about/(\w+)$','about_pages'),
     (r'^Firefox_wallpaper/$','my_image'),
     (r'^unruly_passengers_csv/$','unruly_passengers_csv'),
+    (r'^register/$','register'),
 )
 #def get_book():
 #  return Book.objects.all()
@@ -74,11 +75,13 @@ urlpatterns += patterns('',
     (r'^books/$',list_detail.object_list,book_info),
     (r'^books/apress$',list_detail.object_list,apress_books),
 #    (r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': '/media'}),
-    (r'^feeds/(?P<url>.*)/$','django.contrib.syndication.views.feed',{'feed_dict':feeds}),
+    (r'^feeds/(?P<url>.*)/$','django.contrib.syndication.views.feed',{'feed_dict':feeds}),#feeds 登入使用地址feeds/latest
 #    (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
     (r'^sitemap-(?P<section>.+).xml$','django.contrib.sitemaps.views.sitemap',{'sitemaps': sitemaps}),
 
     (r'^sitemap.xml$','django.contrib.sitemaps.views.index',{'sitemaps': sitemaps}),
+    (r'^login',login,{"template_name":'login.html'}),
+    (r'^logout/$', logout),
 
     
 
