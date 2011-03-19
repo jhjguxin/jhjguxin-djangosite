@@ -80,7 +80,7 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.load_template_source',
 #     'django.template.loaders.eggs.Loader',
 )
-#响应中间件是自后向前执行的
+#request是顺序执行的响应中间件是自后向前执行的
 MIDDLEWARE_CLASSES = (
      'django.middleware.common.CommonMiddleware',
      'django.contrib.sessions.middleware.SessionMiddleware',
@@ -92,6 +92,7 @@ MIDDLEWARE_CLASSES = (
       "django.middleware.csrf.CsrfResponseMiddleware",
       'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware', 
       "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
+      "django.middleware.gzip.GZipMiddleware",
 )
 
 ROOT_URLCONF = 'mysite.urls'
