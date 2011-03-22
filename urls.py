@@ -15,11 +15,11 @@ from django.conf.urls.defaults import *
 from mysite.feeds.feeds import LatesEntries
 from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
 from django.contrib.auth.views import login,logout
-
+#global urlpatterns
 urlpatterns = patterns('mysite.views',
 #    (r'^admin/',include(admin.site.urls)),
     (r'^hello1/$', 'hello1'),
-    (r'^$', 'my_homepage_view'),
+    (r'^$', 'my_homepage_view',),
     (r'^hello/$', 'hello'),
     (r'^time/$','current_datetime'),
     (r'^time/plus/(\d{1,2})/$','hours_ahead'),#'\'转义

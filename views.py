@@ -11,13 +11,48 @@ import datetime
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-from mysite.urls import *
+#from mysite.urls import *
 
 def hello(request):
   return HttpResponse("Hello world!")
 
+
 def my_homepage_view(request):
-  return render_to_response("index.html",{"url":urlpatterns})
+  urls=[
+    (r'^hello1/$', 'hello1'),
+    (r'^$', 'my_homepage_view',),
+    (r'^hello/$', 'hello'),
+    (r'^time/$','current_datetime'),
+    (r'^time/plus/(\d{1,2})/$','hours_ahead'),#'\'转义
+    (r'^request_info/$','display_meta'),
+    (r'^about/(\w+)$','about_pages'),#if page is not exsites return 404 error
+    (r'^Firefox_wallpaper/$','my_image'),
+    (r'^unruly_passengers_csv/$','unruly_passengers_csv'),
+    (r'^register/$','register'),
+    (r'^aboutme/Personal_Details.txt','Personal_Details'),
+    (r'^aboutme/$','aboutme'),
+
+    (r'^admin/',"include(admin.site.urls)"),
+    (r'^about/$',"direct_to_template","{'template':'about.html'}"),  
+    (r'^publishers/$',"list_detail.object_list","publisher_info"),
+    (r'^books/$',"list_detail.object_list","book_info"),
+    (r'^books/apress$',"list_detail.object_list","apress_books"),
+    (r'^feeds/(?P<url>.*)/$','django.contrib.syndication.views.feed',"{'feed_dict':feeds}"),#feeds 登入使用地址feeds/latest
+    (r'^sitemap-(?P<section>.+).xml$','django.contrib.sitemaps.views.sitemap',"{'sitemaps': sitemaps}"),
+    (r'^sitemap.xml$','django.contrib.sitemaps.views.index',"{'sitemaps': sitemaps}"),
+    (r'^login',"login","{'template_name':'login.html'}"),
+    (r'^logout/$', "logout"),
+
+    (r'^search-form/$','search_form'),
+    (r'^search/$','search'),
+    (r'^contact/$','contact'),
+    (r'^contact/thanks/$','thanks'),
+    (r"^books/([\w'\s]+)$",'books_by_publisher'),
+    (r"^authors/(?P<author_id>\d+)/$",'author_detail'),
+]
+  return render_to_response("index.html",{"urls":urls})
+
+
 """
 def current_datetime(request):
   now=datetime.datetime.now()
