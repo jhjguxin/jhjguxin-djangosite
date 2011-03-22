@@ -11,43 +11,13 @@ import datetime
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-
-
+from mysite.urls import *
 
 def hello(request):
   return HttpResponse("Hello world!")
 
 def my_homepage_view(request):
-  url="""
-urlpatterns = patterns('mysite.views',
-#    (r'^admin/',include(admin.site.urls)),
-    (r'^hello1/$', 'hello1'),
-    (r'^$', 'my_homepage_view'),
-    (r'^hello/$', 'hello'),
-    (r'^time/$','current_datetime'),
-    (r'^time/plus/(\d{1,2})/$','hours_ahead'),#'\'转义
-    (r'^request_info/$','display_meta'),
-    (r'^about/(\w+)$','about_pages'),
-)
-
-urlpatterns += patterns('',
-    (r'^admin/',include(admin.site.urls)),
-    (r'^about/$',direct_to_template,{'template':'about.html'}),  
-    (r'^publishers/$',list_detail.object_list,publisher_info),
-    (r'^books/$',list_detail.object_list,book_info),
-    (r'^books/apress$',list_detail.object_list,apress_books),
-
-)
-urlpatterns+=patterns('mysite.books.views',
-    (r'^search-form/$','search_form'),
-    (r'^search/$','search'),
-    #(r'^contact-form/$',views.contact),
-    (r'^contact/$','contact'),
-    (r'^contact/thanks/$','thanks'),
-    (r"^books/([\w'\s]+)$",'books_by_publisher'),
-    (r"^authors/(?P<author_id>\d+)/$",'author_detail'),
-"""
-  return render_to_response("index.html",{"url":url})
+  return render_to_response("index.html",{"url":urlpatterns})
 """
 def current_datetime(request):
   now=datetime.datetime.now()
@@ -145,4 +115,7 @@ def register(request):
 #  return render_to_response("registration/register.html",{"form":form,})
   return render_to_response("register.html",{"form":form,})
 
-
+def aboutme(request):
+  return render_to_response("Personal_Details.html",)
+def Personal_Details(request):
+  return render_to_response("Personal_Details.txt",)

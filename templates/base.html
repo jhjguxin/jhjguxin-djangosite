@@ -5,11 +5,28 @@
 <link rel="stylesheet" type="text/css" href="/f_media/css/base.css" />
 </head>
 <body>
-  {% if user.is_authenticated %}
-    <p>Welcome, {{ user.username }}. Thanks for logging in or <a href="/logout">log out</a>.</p>
-  {% else %}
-    <p>Welcome, new user. Please <a href="/login">log in</a>or<a href="/register">register</a> .</p>
-  {% endif %}
+<table width="100%" >
+    <td width="50%" align='left'>
+     {% if user.is_authenticated %}
+      <p>Welcome, {{ user.username }}. Thanks for logging in or <a href="/logout">log out</a>.</p>
+     {% else %}
+      <p>Welcome, new user. Please <a href="/login">log in</a>or<a href="/register">register</a> .</p>
+     {% endif %}
+    </td>
+    <td width="50%" align='right'><a href="/aboutme">about me</a>and<a href="/about">about mysite</a></td>
+</table>
+<table width="100%" border="1">
+    <td><a href="/">index</a></td>
+    <td><a href="/books">books</a></td>
+    <td><a href="/publishers">publishers</a></td>
+    <td><a href="/books/apress">the books published by apress</a></td>
+    <td><a href="/search-form">search-book</a></td>
+    <td><a href="/contact">contact me</a></td>
+    <td><a href="/request_info">request_info</a></td>
+    <td><a href="/time">time</a></td>
+    <td><a href="/admin">admin</a></td>
+</table>
+
 
   <center>
     <h1>Haijun Jiang's  django site</h1>

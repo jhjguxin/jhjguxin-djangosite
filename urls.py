@@ -24,10 +24,13 @@ urlpatterns = patterns('mysite.views',
     (r'^time/$','current_datetime'),
     (r'^time/plus/(\d{1,2})/$','hours_ahead'),#'\'转义
     (r'^request_info/$','display_meta'),
-    (r'^about/(\w+)$','about_pages'),
+    (r'^about/(\w+)$','about_pages'),#if page is not exsites return 404 error
     (r'^Firefox_wallpaper/$','my_image'),
     (r'^unruly_passengers_csv/$','unruly_passengers_csv'),
     (r'^register/$','register'),
+    (r'^aboutme/Personal_Details.txt','Personal_Details'),
+    (r'^aboutme/$','aboutme'),
+
 )
 #def get_book():
 #  return Book.objects.all()
