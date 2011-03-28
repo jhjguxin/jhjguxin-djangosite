@@ -56,7 +56,7 @@ USE_L10N = True
 # Example: "/home/media/media.lawrence.com/"
 #ROOT_PATH = os.path.dirname(os.path.realpath(__file__))
 
-MEDIA_ROOT = '/usr/lib/pymodules/python2.6/django/contrib/admin/media/'
+MEDIA_ROOT = '/home/jhjguxin/Desktop/djcode/mysite/f_media'
 #MEDIA_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
@@ -114,7 +114,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-      'south',
+#      'south',
       'mysite.books',
       'mysite.books.templatetags',
       'django.contrib.admin',
