@@ -5,13 +5,14 @@
 {% block content %}
 <h1>站点目录</h1>
 <table width="100%">    
-  <td width="15%"></td>
+  <td width="15%"><a href='/map/googlemap.html'>新增Google地图功能欢迎访问</a></td>
   <td width="70%">
         {% for url in urls %}
             <p>{{ url }}</p>
         {% endfor %}
   </td>
-  <td width="15%"></td>
+  <td width="15%">
+  </td>
 </table>    
 {% endblock %}
 
